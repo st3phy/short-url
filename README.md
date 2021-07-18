@@ -11,9 +11,9 @@ At its most basic, an *URL shortener* takes some long, unwieldy link and turns i
 - [BL.INK](https://zapier.com/blog/best-url-shorteners/#blink) for small business owners
 
 #### Language used
-Throughout this project, PHP will be used.
-```php
-if(writing php is fun) {
+Throughout this project, JavaScript, CSS and HTML will be used.
+```js
+if (writing.js.is.fun) {
     return true;
 }
 ```
