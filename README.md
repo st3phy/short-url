@@ -25,7 +25,7 @@ if(writing php is fun) {
 - [ ] Write code
 - [ ] Celebrate
 
-And finally, thank you @kneath for helping me become a programmer. :kissing_heart:
+And finally, thank you @stephino for helping me become a programmer :kissing_heart:
 
 >Experience is the name everyone gives to their mistakes.
 > – Oscar Wilde
