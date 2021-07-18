@@ -1,5 +1,5 @@
 # URL Shortner
-This is an URL shortner created by *your trully*. :grinning:
+This is an URL shortner created by *yours truly*. :grinning:
 
 ### What is an URL shortner?
 At its most basic, an *URL shortener* takes some long, unwieldy link and turns it into a shorter, easy-to-share one.
@@ -25,7 +25,7 @@ if(writing php is fun) {
 - [ ] Write code
 - [ ] Celebrate
 
-And finally, thank you **@ stephino** for helping me become a programmer. :kissing_heart:
+And finally, thank you @stephino for helping me become a programmer. :kissing_heart:
 
 >Experience is the name everyone gives to their mistakes.
 > – Oscar Wilde
