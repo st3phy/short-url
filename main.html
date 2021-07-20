@@ -1,28 +1,63 @@
 <!DOCTYPE HTML>
-<html>
+<html lang="en">
+  <head>
+    <title>URL Shortener</title>
+    <link rel="icon" href="favicon.png">
+  </head>
   <body>
     <!-- The core Firebase JS SDK is always required and must be listed first -->
     <script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-app.js"></script>
 
-    <!-- TODO: Add SDKs for Firebase products that you want to use
-         https://firebase.google.com/docs/web/setup#available-libraries -->
-    <script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-analytics.js"></script>
+    <!-- Realtime database -->
+    <script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-database.js"></script>
 
+    <input type="text" name="url" placeholder="your long url" value="ceva">
+    <button>Shorten</button>
+    
     <script>
-      // Your web app's Firebase configuration
-      // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-      var firebaseConfig = {
-        apiKey: "AIzaSyD-RqbfiWAMtxg5cNY5x2LDPI1HHlI7z38",
+      // Set the configuration for your app
+      var config = {
+        apiKey: "AIzaSyB-JrTrNyiwG3ujlFAgbfYNO5BIleTa188",
         authDomain: "short-url-ffd96.firebaseapp.com",
-        projectId: "short-url-ffd96",
-        storageBucket: "short-url-ffd96.appspot.com",
-        messagingSenderId: "917946851854",
-        appId: "1:917946851854:web:e730ced2f016e2b053d25f",
-        measurementId: "G-PFQFH0YTFE"
+        // For databases not in the us-central1 location, databaseURL will be of the
+        // form https://[databaseName].[region].firebasedatabase.app.
+        // For example, https://your-database-123.europe-west1.firebasedatabase.app
+        databaseURL: "https://short-url-ffd96-default-rtdb.europe-west1.firebasedatabase.app/"
       };
-      // Initialize Firebase
-      firebase.initializeApp(firebaseConfig);
-      firebase.analytics();
+      firebase.initializeApp(config);
+
+      // Get a reference to the database service
+      var database = firebase.database();
+
+      document.querySelector('button').addEventListener('click', function(event) {
+        // Get the last ID
+        firebase.database().ref('lastId').get().then(function(snapshot) {
+          var longUrl = document.querySelector('[name="url"]').value;
+          var nextId = snapshot.val() + 1;
+
+          // Use base 64
+          var key = base10_to_base64(nextId);
+
+          // Increment the last ID
+          firebase.database().ref('lastId').set(nextId);
+
+          // Store the URL
+          database.ref('urls/' + key).set(longUrl);
+        });
+      });
+
+      function base10_to_base64(key) {
+        key = 100;
+        var chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_-';
+        var base = chars.length;
+        var str = '', i;
+        while(key) {
+          i = key % base;
+          key = Math.floor(key / base);
+          str = chars.charAt(i) + str;
+        }
+        return str;
+      }
     </script>
   </body>
 </html>
