@@ -19,7 +19,7 @@ document.querySelector('button').addEventListener('click', function(event) {
         var nextId = snapshot.val() + 1;
 
         // Use base 64
-        var key = base10_to_base64(nextId);
+        var key = base10ToBase64(nextId);
 
         // Increment the last ID
         firebase.database().ref('lastId').set(nextId);
@@ -27,17 +27,40 @@ document.querySelector('button').addEventListener('click', function(event) {
         // Store the URL
         database.ref('urls/' + key).set(longUrl);
     });
+
 });
 
 // Base 10 to base 64 conversion
-function base10_to_base64(key) {
-var chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_-';
-var base = chars.length;
-var str = '', i;
-while(key) {
-    i = key % base;
-    key = Math.floor(key / base);
-    str = chars.charAt(i) + str;
+function base10ToBase64(key) {
+    var chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_-';
+    var base = chars.length;
+    var str = '', i;
+    while(key) {
+        i = key % base;
+        key = Math.floor(key / base);
+        str = chars.charAt(i) + str;
+    }
+    return str;
 }
-return str;
+
+// Check for hash in url
+function checkForHash(){
+    // Remove # from hash
+    var hash = window.location.hash.substring(1);
+
+    if("" !== hash){
+        firebase.database().ref(`urls/${hash}`).get().then(function(snapshot) {
+            // Searh for long url in database
+            var longUrl = snapshot.val();
+    
+            // If exists, redirect
+            window.location = 'string' === typeof longUrl && longUrl.match(/^https?:\/\//g)
+                ? longUrl 
+                : "http://localhost/short-url/main.html";
+        });
+    }   
 }
+
+checkForHash();
+window.setInterval(checkForHash, 2000);
+
