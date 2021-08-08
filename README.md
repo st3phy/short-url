@@ -22,8 +22,8 @@ if (writing.js.is.fun) {
 - [x] Create repository
 - [x] Master Markdown
 - [x] Write **README.md**
-- [ ] Write code
-- [ ] Celebrate
+- [x] Write code
+- [x] Celebrate
 
 And finally, thank you @stephino for helping me become a programmer :kissing_heart:
 
