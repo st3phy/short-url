@@ -1,10 +1,10 @@
-# URL Shortner
-This is an URL shortner created by *yours truly*. :grinning:
+# URL Shortener
+This is an URL shortener created by *yours truly*. :grinning:
 
-### What is an URL shortner?
+### What is an URL shortener?
 At its most basic, an *URL shortener* takes some long, unwieldy link and turns it into a shorter, easy-to-share one.
 
-### The best URL shortners according to [Google](http://google.com)
+### The best URL shorteners according to [Google](http://google.com)
 - [Bitly](https://zapier.com/blog/best-url-shorteners/#bitly) for the best all-round URL shortener
 - [Rebrandly](https://zapier.com/blog/best-url-shorteners/#rebrandly) for creating branded links
 - [TinyURL](https://zapier.com/blog/best-url-shorteners/#tinyurl) for fast and anonymous short URLs
