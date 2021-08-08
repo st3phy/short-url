@@ -96,5 +96,3 @@ window.addEventListener('DOMContentLoaded', (event) => {
     checkForHash();
     window.setInterval(checkForHash, 2000);
 });
-
-
